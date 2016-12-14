@@ -314,17 +314,16 @@ record_type = "record_type_example" # String | Entity type
 
 title = "title_example" # String | Document title
 
-url = "url_example" # String | Document url
-
 opts = { 
-  file: File.new("/path/to/file.txt"), # File | File to upload
+  url: "//path/to/file", # String | Url of file to attach
+  file: File.open("/path/to/file.txt"), # File | File to upload
   private_flag: true, # BOOLEAN | Indicates if document is private
   read_only_flag: true, # BOOLEAN | Indicates if document is readonly
   is_avatar: true # BOOLEAN | Indicates if document contains an avatar
 }
 
 begin
-  result = api_instance.system_documents_id_post(id, record_id, record_type, title, url, opts)
+  result = api_instance.system_documents_id_post(id, record_id, record_type, title, opts)
   p result
 rescue ConnectWise::ApiError => e
   puts "Exception when calling DocumentsApi->system_documents_id_post: #{e}"
@@ -339,8 +338,8 @@ Name | Type | Description  | Notes
  **record_id** | **Integer**| Entity id | 
  **record_type** | **String**| Entity type | 
  **title** | **String**| Document title | 
- **url** | **String**| Document url | 
- **file** | **File**| File to upload | [optional] 
+ **url** | **String**| Document url | [optional if file present]
+ **file** | **File**| File to upload | [optional if url present] 
  **private_flag** | **BOOLEAN**| Indicates if document is private | [optional] 
  **read_only_flag** | **BOOLEAN**| Indicates if document is readonly | [optional] 
  **is_avatar** | **BOOLEAN**| Indicates if document contains an avatar | [optional] 
@@ -384,18 +383,17 @@ record_type = "record_type_example" # String | Entity type
 
 title = "title_example" # String | Document title
 
-url = "url_example" # String | Document url
-
 opts = { 
-  file: File.new("/path/to/file.txt"), # File | File to upload
   record_id: 56, # Integer | Entity id
+  url: "//path/to/file", # String | Document url
+  file: File.open("/path/to/file.txt"), # File | File to upload
   private_flag: true, # BOOLEAN | Indicates if document is private
   read_only_flag: true, # BOOLEAN | Indicates if document is readonly
   is_avatar: true # BOOLEAN | Indicates if document contains an avatar
 }
 
 begin
-  result = api_instance.system_documents_post(record_type, title, url, opts)
+  result = api_instance.system_documents_post(record_type, title, opts)
   p result
 rescue ConnectWise::ApiError => e
   puts "Exception when calling DocumentsApi->system_documents_post: #{e}"
@@ -408,8 +406,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **record_type** | **String**| Entity type | 
  **title** | **String**| Document title | 
- **url** | **String**| Document url | 
- **file** | **File**| File to upload | [optional] 
+ **url** | **String**| Document url | [optional if file is provided]
+ **file** | **File**| File to upload | [optional if url is provided] 
  **record_id** | **Integer**| Entity id | [optional] 
  **private_flag** | **BOOLEAN**| Indicates if document is private | [optional] 
  **read_only_flag** | **BOOLEAN**| Indicates if document is readonly | [optional] 
