@@ -2,10 +2,10 @@
 
 ConnectWise - the Ruby gem for the ConnectWise API
 
-ConnectWise Time API
+ConnectWise API
 
 - API version: 3.0.0
-- Package version: 2.0.0
+- Package version: 2.0.1
 
 ## Installation
 
@@ -20,21 +20,21 @@ gem build connectwise-ruby-sdk.gemspec
 Then either install the gem locally:
 
 ```shell
-gem install ./connectwise-ruby-sdk-2.0.0.gem
+gem install ./connectwise-ruby-sdk-2.0.1.gem
 ```
-(for development, run `gem install --dev ./connectwise-ruby-sdk-2.0.0.gem` to install the development dependencies)
+(for development, run `gem install --dev ./connectwise-ruby-sdk-2.0.1.gem` to install the development dependencies)
 
 or publish the gem to a gem hosting service, e.g. [RubyGems](https://rubygems.org/).
 
 Finally add this to the Gemfile:
 
-    gem 'connectwise-ruby-sdk', '~> 2.0.0'
+    gem 'connectwise-ruby-sdk', '~> 2.0.1'
 
 ### Install from Git
 
-If the Ruby gem is hosted at a git repository: https://github.com/GIT_USER_ID/GIT_REPO_ID, then add the following in the Gemfile:
+If the Ruby gem is hosted at a git repository: https://github.com/sowderca/connectwise-ruby-sdk, then add the following in the Gemfile:
 
-    gem 'connectwise-ruby-sdk', :git => 'https://github.com/GIT_USER_ID/GIT_REPO_ID.git'
+    gem 'connectwise-ruby-sdk', :git => 'https://github.com/sowderca/connectwise-ruby-sdk.git'
 
 ### Include the Ruby code directly
 
@@ -51,17 +51,18 @@ Please follow the [installation](#installation) procedure and then run the follo
 # Load the gem
 require 'connectwise-ruby-sdk'
 
-# Setup authorization
 ConnectWise.configure do |config|
-  # Configure HTTP basic authorization: BasicAuth
-  config.username = 'YOUR USERNAME'
-  config.password = 'YOUR PASSWORD'
+  config.username = "#{company_id}+#{public_api_key}"
+  config.password =  "#{private_api_key}"
+  config.host = 'api-na.myconnectwise.net' # your connectwise url
+  config.base_path = '/v4_6_release/apis/3.0' # Or alternative code base release
+  config.scheme = 'https'
 end
 
 api_instance = ConnectWise::AccountingBatchesApi.new
 
 opts = {
-  conditions: "conditions_example" # String |
+  conditions: "conditions_example" # String
 }
 
 begin
