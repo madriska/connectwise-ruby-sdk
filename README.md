@@ -5,7 +5,7 @@ ConnectWise - the Ruby gem for the ConnectWise API
 ConnectWise API
 
 - API version: 3.0.0
-- Package version: 2.0.1
+- Package version: 2.0.2
 
 ## Installation
 
@@ -20,15 +20,15 @@ gem build connectwise-ruby-sdk.gemspec
 Then either install the gem locally:
 
 ```shell
-gem install ./connectwise-ruby-sdk-2.0.1.gem
+gem install ./connectwise-ruby-sdk-2.0.2.gem
 ```
-(for development, run `gem install --dev ./connectwise-ruby-sdk-2.0.1.gem` to install the development dependencies)
+(for development, run `gem install --dev ./connectwise-ruby-sdk-2.0.2.gem` to install the development dependencies)
 
 or publish the gem to a gem hosting service, e.g. [RubyGems](https://rubygems.org/).
 
 Finally add this to the Gemfile:
 
-    gem 'connectwise-ruby-sdk', '~> 2.0.1'
+    gem 'connectwise-ruby-sdk', '~> 2.0.2'
 
 ### Install from Git
 
@@ -57,6 +57,7 @@ ConnectWise.configure do |config|
   config.host = 'api-na.myconnectwise.net' # your connectwise url
   config.base_path = '/v4_6_release/apis/3.0' # Or alternative code base release
   config.scheme = 'https'
+  config.client_id = 'XXXX'
 end
 
 api_instance = ConnectWise::AccountingBatchesApi.new
@@ -2523,4 +2524,3 @@ Class | Method | HTTP request | Description
 ### BasicAuth
 
 - **Type**: HTTP basic authentication
-
